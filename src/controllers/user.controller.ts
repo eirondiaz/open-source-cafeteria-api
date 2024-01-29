@@ -1,5 +1,5 @@
 import { Request, Response } from 'express'
-import { User } from '../model/User'
+import { User, UserType } from '../model'
 
 interface UserBody {
   name: string
@@ -41,11 +41,13 @@ export const createUser = async (
   const { name, cedula, creditLimit, userTypeId } = req.body
   const user = new User()
 
+  const userType = await UserType.findOneBy({ id: userTypeId })
+
   user.name = name
   user.cedula = cedula
   user.creditLimit = creditLimit
-  //user.userTypeId = userTypeId
-  
+  user.userTypeId = userType || new UserType()
+
   await user.save()
   return res.json(user)
 }
