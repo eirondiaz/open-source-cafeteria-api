@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { Supplier } from '../model'
+import { AppDataSource as dbConfig } from '../db'
 
 interface SupplierBody {
   comercialName: string
@@ -59,8 +60,15 @@ export const updateSupplier = async (req: Request, res: Response) => {
     const supplier = await Supplier.findOneBy({ id })
     if (!supplier)
       return res.status(404).json({ message: 'Not supplier found' })
+    const nSupplier = new Supplier()
 
-    await Supplier.update({ id }, req.body)
+    const body = req.body
+    body.id = id
+
+    await dbConfig.getRepository(Supplier).save({
+      ...body,
+      ...nSupplier,
+    })
 
     return res.sendStatus(204)
   } catch (error) {

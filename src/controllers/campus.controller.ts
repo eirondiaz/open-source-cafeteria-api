@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { Campus } from '../model'
+import { AppDataSource as dbConfig } from '../db'
 
 interface CampusBody {
   description: string
@@ -50,8 +51,15 @@ export const updateCampus = async (req: Request, res: Response) => {
   try {
     const campus = await Campus.findOneBy({ id })
     if (!campus) return res.status(404).json({ message: 'Not campus found' })
+    const nCampus = new Campus()
 
-    await Campus.update({ id }, req.body)
+    const body = req.body
+    body.id = id
+
+    await dbConfig.getRepository(Campus).save({
+      ...body,
+      ...nCampus,
+    })
 
     return res.sendStatus(204)
   } catch (error) {
