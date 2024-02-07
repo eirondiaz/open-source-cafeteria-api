@@ -11,7 +11,7 @@ interface CafeteriaBody {
 
 export const getCafeterias = async (req: Request, res: Response) => {
   try {
-    const cafeterias = await Cafeteria.find()
+    const cafeterias = await Cafeteria.find({ relations: ['campusId'] })
     return res.json(cafeterias)
   } catch (error) {
     if (error instanceof Error) {
