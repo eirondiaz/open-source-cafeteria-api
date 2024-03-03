@@ -11,7 +11,7 @@ interface ItemBody {
 
 export const getItems = async (req: Request, res: Response) => {
   try {
-    const items = await Item.find({ relations: ['brandId, supplierId'] })
+    const items = await Item.find({ relations: ['brandId', 'supplierId'] })
     return res.json(items)
   } catch (error) {
     if (error instanceof Error) {
