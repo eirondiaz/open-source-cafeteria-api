@@ -1,5 +1,14 @@
 import { DataSource } from 'typeorm'
-import { Cafeteria, Campus, Supplier, User, UserType } from './model'
+import {
+  Brand,
+  Cafeteria,
+  Campus,
+  Employee,
+  Item,
+  Supplier,
+  User,
+  UserType,
+} from './model'
 import * as dotenv from 'dotenv'
 
 dotenv.config()
@@ -13,5 +22,5 @@ export const AppDataSource = new DataSource({
   database: process.env.NAME || '',
   synchronize: true,
   // logging: true,
-  entities: [UserType, User, Campus, Supplier, Cafeteria],
+  entities: [UserType, User, Campus, Supplier, Cafeteria, Brand, Item, Employee],
 })
