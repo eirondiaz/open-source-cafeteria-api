@@ -7,6 +7,7 @@ import CafeteriaRouter from './cafeteria.routes'
 import BrandRouter from './brand.routes'
 import ItemRouter from './item.routes'
 import EmployeeRouter from './employee.routes'
+import SaleRouter from './sale.routes'
 
 const router = Router()
 
@@ -18,5 +19,6 @@ router.use('/user-types', UserTypeRouter)
 router.use('/brands', BrandRouter)
 router.use('/items', ItemRouter)
 router.use('/employees', EmployeeRouter)
+router.use('/sales', SaleRouter)
 
 export default router
