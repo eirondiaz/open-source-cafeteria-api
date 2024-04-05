@@ -8,6 +8,7 @@ import {
   Supplier,
   User,
   UserType,
+  Sale,
 } from './model'
 import * as dotenv from 'dotenv'
 
@@ -22,5 +23,15 @@ export const AppDataSource = new DataSource({
   database: process.env.NAME || '',
   synchronize: true,
   // logging: true,
-  entities: [UserType, User, Campus, Supplier, Cafeteria, Brand, Item, Employee],
+  entities: [
+    UserType,
+    User,
+    Campus,
+    Supplier,
+    Cafeteria,
+    Brand,
+    Item,
+    Employee,
+    Sale,
+  ],
 })
