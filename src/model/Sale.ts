@@ -7,6 +7,7 @@ import {
   UpdateDateColumn,
   ManyToOne,
 } from 'typeorm'
+import { Employee } from './Employee'
 import { Item } from './Item'
 import { User } from './User'
 
@@ -20,6 +21,9 @@ export class Sale extends BaseEntity {
 
   @Column()
   units: number
+
+  @ManyToOne((type) => Employee, (employee) => employee.id)
+  employeeId!: Employee
 
   @ManyToOne((type) => Item, (item) => item.id)
   itemId!: Item
