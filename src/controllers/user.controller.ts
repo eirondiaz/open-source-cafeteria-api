@@ -10,7 +10,7 @@ interface UserBody {
 
 export const getUsers = async (req: Request, res: Response) => {
   try {
-    const users = await User.find()
+    const users = await User.find({ relations: ['userTypeId'] })
     return res.json(users)
   } catch (error) {
     if (error instanceof Error) {
