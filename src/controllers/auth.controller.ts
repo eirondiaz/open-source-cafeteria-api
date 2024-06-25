@@ -5,12 +5,12 @@ import { Login } from '../model'; // Asegúrate de que tienes un modelo Login de
 import { AppDataSource as dbConfig } from '../db';
 
 interface LoginBody {
-  Loginname: string;
+  username: string;
   password: string;
 }
 
 interface RegisterBody {
-  Loginname: string;
+  username: string;
   password: string;
   email: string;
 }
