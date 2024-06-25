@@ -1,3 +1,4 @@
+import { Login } from './Login'
 import { Sale } from './Sale'
 import { Employee } from './Employee'
 import { Item } from './Item'
@@ -8,4 +9,15 @@ import { Campus } from './Campus'
 import { User } from './User'
 import { Cafeteria } from './Cafeteria'
 
-export { Campus, User, Cafeteria, UserType, Supplier, Brand, Item, Employee, Sale }
+export {
+  Campus,
+  User,
+  Cafeteria,
+  UserType,
+  Supplier,
+  Brand,
+  Item,
+  Employee,
+  Sale,
+  Login,
+}

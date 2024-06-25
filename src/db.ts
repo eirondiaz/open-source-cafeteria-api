@@ -9,6 +9,7 @@ import {
   User,
   UserType,
   Sale,
+  Login,
 } from './model'
 import * as dotenv from 'dotenv'
 
@@ -33,5 +34,6 @@ export const AppDataSource = new DataSource({
     Item,
     Employee,
     Sale,
+    Login,
   ],
 })
