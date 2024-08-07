@@ -15,7 +15,7 @@ interface SaleBody {
 export const getSales = async (req: Request, res: Response) => {
   try {
     const sales = await Sale.find({
-      relations: ['itemId', 'userId', 'employeeId'],
+      relations: ['itemId', 'itemId.brandId', 'userId', 'employeeId'],
     })
     return res.json(sales)
   } catch (error) {
