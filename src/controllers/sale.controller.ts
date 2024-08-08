@@ -62,6 +62,13 @@ export const createSale = async (
   sale.userId = user
   sale.employeeId = employee
 
+  let remStock = item.stock - sale.units
+
+  await dbConfig.getRepository(Item).save({
+    ...item,
+    stock: remStock < 0 ? 0 : remStock,
+  })
+
   await sale.save()
   return res.json(sale)
 }
